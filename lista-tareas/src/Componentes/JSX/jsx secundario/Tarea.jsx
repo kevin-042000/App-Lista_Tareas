@@ -15,27 +15,46 @@ const ComponenteTarea = ({prop}) => {
 
 
     return (
-        <div>
 
-        <h2>
-          Nombre: { prop.nombre }
-        </h2>
+        <tr  className='fw-normal'>
+          <th>
+            <span className='ms-2'>{prop.nombre}</span>
+          </th>
+          <td className='align-middle'>
+             <span>{prop.descripcion}</span>
+          </td>
+          <td className='align-middle'>
+             <span>{prop.nivel}</span>
+          </td>
+          <td className='align-middle'>
+             <span>{prop.completada}</span>
+          </td>
 
-        <h3>
-            Descripcion: { prop.descripcion }
-        </h3>
+        </tr>
 
-        <h4>
-            Nivel: { prop.nivel }
-        </h4>
 
-        <h5>
-            La tarea esta: { prop.completada ? 'Completada' : 'Pendiente' }
-        </h5>
+
+        // <div>
+
+        // <h2>
+        //   Nombre: { prop.nombre }
+        // </h2>
+
+        // <h3>
+        //     Descripcion: { prop.descripcion }
+        // </h3>
+
+        // <h4>
+        //     Nivel: { prop.nivel }
+        // </h4>
+
+        // <h5>
+        //     La tarea esta: { prop.completada ? 'Completada' : 'Pendiente' }
+        // </h5>
             
 
 
-        </div>
+        // </div>
     );
 };
 

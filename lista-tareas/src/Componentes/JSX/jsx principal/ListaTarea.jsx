@@ -31,8 +31,34 @@ const ListaTarea = () => {
     return (
         <div>
 
-        <div>
-            <h2>La Tarea:</h2>
+        <div className='col-12'>
+           <div className='card'>
+              <div className='card-header p-3'>
+              <h5>
+                Tus Tareas:
+              </h5>
+              </div>
+
+              <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position: 'relative', height: '400px'}}>
+
+              <table>
+                <thead>
+                    <tr>
+                    <th scope='col'>Titulo</th>
+                    <th scope='col'>Descripcion</th>
+                    <th scope='col'>Prioridad</th>
+                    <th scope='col'>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+              </table>
+
+              </div>
+
+
+           </div>
         </div>
 
         <ComponenteTarea prop={TareaDefecto}></ComponenteTarea>

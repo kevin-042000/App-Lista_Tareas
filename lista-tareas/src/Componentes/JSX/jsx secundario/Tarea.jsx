@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Tarea } from '../../JS/tarea';
+import { NIVELES } from '../../JS/niveles';
 
 
 const ComponenteTarea = ({prop}) => {
@@ -11,6 +12,52 @@ const ComponenteTarea = ({prop}) => {
             console.log(`Tarea: ${prop.nombre} se a desmontado`)
         };
     }, [prop]);
+
+
+    function nivel_de_tarea(){
+        switch (prop.nivel){
+            case NIVELES.NORMAL:
+                return(
+                    <h6 className='mb-0'>
+                    <span className='badge bg-primary'>
+                        {prop.nivel}
+                    </span>
+                    </h6>)
+
+            case NIVELES.URGENTE:
+                return(
+                <h6 className='mb-0'>
+                <span className='badge bg-warning'>
+                {prop.nivel}
+                </span>
+                 </h6>
+                 )
+
+                 case NIVELES.BLOQUIANTE:
+                    return(
+                        <h6 className='mb-0'>
+                        <span className='badge bg-danger'>
+                            {prop.nivel}
+                        </span>
+                        </h6>)
+
+                                default:
+                                    break;
+                        }
+                    }
+
+    function icon_de_tarea_completada(){
+        if(prop.completada){
+            return (<i className='bi-toggle-on' style={{color: 'green'}}></i>)
+        }else {
+            return  <i className='bi-toggle-off' style={{color:'grey'}}></i>
+        }
+    }
+    
+
+
+
+
 
 
 
@@ -24,37 +71,16 @@ const ComponenteTarea = ({prop}) => {
              <span>{prop.descripcion}</span>
           </td>
           <td className='align-middle'>
-             <span>{prop.nivel}</span>
+             {nivel_de_tarea()}
           </td>
           <td className='align-middle'>
-             <span>{prop.completada}</span>
+            {icon_de_tarea_completada ()}
+            <i className='bi-trash' style={{color: 'red'}}></i>
           </td>
 
         </tr>
 
 
-
-        // <div>
-
-        // <h2>
-        //   Nombre: { prop.nombre }
-        // </h2>
-
-        // <h3>
-        //     Descripcion: { prop.descripcion }
-        // </h3>
-
-        // <h4>
-        //     Nivel: { prop.nivel }
-        // </h4>
-
-        // <h5>
-        //     La tarea esta: { prop.completada ? 'Completada' : 'Pendiente' }
-        // </h5>
-            
-
-
-        // </div>
     );
 };
 

@@ -5,10 +5,12 @@ import ComponenteTarea from '../jsx secundario/Tarea'
 
 const ListaTarea = () => {
 
-    const TareaDefecto = new Tarea('primera', 'jajajaj', false, NIVELES.NORMAL)
+    const Tarea1 = new Tarea('primera', 'jajajaj', true, NIVELES.NORMAL)
+    const Tarea2 = new Tarea('segunda', 'kakak', false, NIVELES.URGENTE)
+    const Tarea3 = new Tarea('tercera', 'jaeknenaj', true, NIVELES.BLOQUIANTE)
     
     ///Estado de componente
-    const [tareas, setTareas] = useState([TareaDefecto]);
+    const [tareas, setTareas] = useState([Tarea1, Tarea2, Tarea3]);
     const [loading, setLoading] = useState(true);
 
 
@@ -51,7 +53,18 @@ const ListaTarea = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    
+
+                {tareas.map((tarea, index) =>{
+                    return (
+                        <ComponenteTarea
+                         key={index} prop={tarea}>
+                        </ComponenteTarea> 
+
+                    )
+                })}
+
+
+                                   
                 </tbody>
               </table>
 
@@ -61,7 +74,7 @@ const ListaTarea = () => {
            </div>
         </div>
 
-        <ComponenteTarea prop={TareaDefecto}></ComponenteTarea>
+       
             
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Tarea } from '../../JS/tarea';
 import { NIVELES } from '../../JS/niveles';
 import ComponenteTarea from '../jsx secundario/Tarea'
+import CargarTarea from '../Formularios/cargar_tarea';
 
 const ListaTarea = () => {
 
@@ -25,9 +26,30 @@ const ListaTarea = () => {
 
     
 
-    const changeCompleted = (id) => {
-        console.log('TODO: Cambiar estado de una tarea')
-    }
+function completarTarea(tarea){
+    console.log('Completa esta tarea:', tarea);
+    const index = tareas.indexOf(tarea);
+    const tempTareas = [...tareas];
+    tempTareas[index].completada = !tempTareas[index].completada;
+    setTareas(tempTareas);
+}
+
+function eliminarTarea(tarea){
+    console.log('eliminaste esta tarea:', tarea);
+    const index = tareas.indexOf(tarea);
+    const tempTareas = [...tareas];
+    tempTareas.splice(index,1);
+    setTareas(tempTareas);
+}
+
+function agregarTareas(tarea){
+    console.log('agregaste esta tarea:', tarea);
+    const index = tareas.indexOf(tarea);
+    const tempTareas = [...tareas];
+    tempTareas.push(tarea);
+    setTareas(tempTareas);
+}
+
 
 
     return (
@@ -54,14 +76,18 @@ const ListaTarea = () => {
                 </thead>
                 <tbody>
 
-                {tareas.map((tarea, index) =>{
+                {tareas.map((tarea, index) => {
                     return (
                         <ComponenteTarea
-                         key={index} prop={tarea}>
-                        </ComponenteTarea> 
-
-                    )
-                })}
+                           key={index}
+                           prop={tarea}
+                           propCompletar={completarTarea} 
+                           propEliminar={eliminarTarea}
+                          /> 
+                           );
+                          })}
+    
+  
 
 
                                    
@@ -74,8 +100,12 @@ const ListaTarea = () => {
            </div>
         </div>
 
-       
-            
+
+        <CargarTarea
+            propAgregar={agregarTareas}
+        />
+
+                    
         </div>
     );
 };

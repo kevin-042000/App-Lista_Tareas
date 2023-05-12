@@ -4,7 +4,7 @@ import { Tarea } from '../../JS/tarea';
 import { NIVELES } from '../../JS/niveles';
 
 
-const ComponenteTarea = ({prop}) => {
+const ComponenteTarea = ({prop, propCompletar, propEliminar}) => {
 
     useEffect(() => {
         console.log('Tarea creada')
@@ -48,13 +48,11 @@ const ComponenteTarea = ({prop}) => {
 
     function icon_de_tarea_completada(){
         if(prop.completada){
-            return (<i className='bi-toggle-on' style={{color: 'green'}}></i>)
+            return (<i onClick={() => propCompletar(prop)} className='bi-toggle-on accion-tarea' style={{color: 'green'}}></i>)
         }else {
-            return  <i className='bi-toggle-off' style={{color:'grey'}}></i>
+            return  <i onClick={() => propCompletar(prop)} className='bi-toggle-off accion-tarea' style={{color:'grey'}}></i>
         }
     }
-    
-
 
 
 
@@ -75,7 +73,7 @@ const ComponenteTarea = ({prop}) => {
           </td>
           <td className='align-middle'>
             {icon_de_tarea_completada ()}
-            <i className='bi-trash' style={{color: 'red'}}></i>
+            <i className='bi-trash accion-tarea' style={{color: 'red'}}   onClick={()=>propEliminar(prop)} ></i>
           </td>
 
         </tr>
@@ -86,7 +84,9 @@ const ComponenteTarea = ({prop}) => {
 
 
 ComponenteTarea.propTypes = {
-    prop: PropTypes.instanceOf(Tarea)
+    prop: PropTypes.instanceOf(Tarea).isRequired,
+    propCompletar: PropTypes.func.isRequired,
+    propEliminar: PropTypes.func.isRequired,
 
 };
 

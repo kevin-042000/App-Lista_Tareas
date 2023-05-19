@@ -4,7 +4,7 @@ import {NIVELES} from '../../JS/niveles'
 import {Tarea} from '../../JS/tarea'
 
 
-const CargarTarea = ({propAgregar}) => {
+const CargarTarea = ({propAgregar, propLenght}) => {
 
     const nombreRef = useRef('');
     const descripcionRef = useRef('');
@@ -28,8 +28,8 @@ const CargarTarea = ({propAgregar}) => {
           <div className='form-outline flex-fill'>
              <input ref={nombreRef} id='inputNombre' type='text' className='form-control form-control-lg' required autoFocus placeholder='Nombre de Tarea' />
              <input ref={descripcionRef} id='inputDescripcion' type='text' className='form-control form-control-lg' required placeholder='Descripcion' />
-             <label htmlFor='seleccionarNivel' className='sr-only'>Prioridad</label>
-             <select ref={nivelRef} defaultValue={NIVELES.NORMAL} id='seleccionarNivel'>
+             {/* <label htmlFor='seleccionarNivel' className='sr-only'>Prioridad</label> */}
+             <select ref={nivelRef} defaultValue={NIVELES.NORMAL} className='form-control form-control-lg' id='seleccionarNivel'>
 
               <option value={NIVELES.NORMAL}>
                     Normal
@@ -41,9 +41,12 @@ const CargarTarea = ({propAgregar}) => {
                     Bloquiante
               </option>
             </select>
+            <button type='submit' className='btn btn-success btn-lg ms-2'>
+               {propLenght > 0 ? 'Agregar nueva tarea' : 'Crear tu primer tarea'}
+            </button>
           </div>
 
-          <button type='submit' className='btn btn-success btn-lg ms-2'>Agregar</button>
+         
             
         </form>
     );
@@ -52,6 +55,7 @@ const CargarTarea = ({propAgregar}) => {
 
 CargarTarea.propTypes = {
     propAgregar: PropTypes.func.isRequired,
+    propLenght: PropTypes.number.isRequired,
 
 };
 

@@ -24,7 +24,9 @@ const ListaTarea = () => {
         };
     }, [tareas]);
 
-    
+
+
+/// funciones
 
 function completarTarea(tarea){
     console.log('Completa esta tarea:', tarea);
@@ -44,11 +46,53 @@ function eliminarTarea(tarea){
 
 function agregarTareas(tarea){
     console.log('agregaste esta tarea:', tarea);
-    const index = tareas.indexOf(tarea);
     const tempTareas = [...tareas];
     tempTareas.push(tarea);
     setTareas(tempTareas);
 }
+
+const Tabla = () => {
+    return (
+        <table>
+        <thead>
+            <tr>
+            <th scope='col'>Titulo</th>
+            <th scope='col'>Descripcion</th>
+            <th scope='col'>Prioridad</th>
+            <th scope='col'>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {tareas.map((tarea, index) => {
+            return (
+                <ComponenteTarea
+                   key={index}
+                   prop={tarea}
+                   propCompletar={completarTarea} 
+                   propEliminar={eliminarTarea}
+                  /> 
+                   );
+                  })}                          
+        </tbody>
+      </table>
+        
+    )
+}
+
+let tablaTareas;
+
+if(tareas.length > 0){
+    tablaTareas = <Tabla></Tabla>
+}else {
+    tablaTareas = (
+    <div>
+      <h3>No hay tareas por el momento</h3>
+      <h4>Puedes crear una tarea</h4>
+    </div>)
+        
+    }
+   
 
 
 
@@ -65,34 +109,7 @@ function agregarTareas(tarea){
 
               <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position: 'relative', height: '400px'}}>
 
-              <table>
-                <thead>
-                    <tr>
-                    <th scope='col'>Titulo</th>
-                    <th scope='col'>Descripcion</th>
-                    <th scope='col'>Prioridad</th>
-                    <th scope='col'>Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                {tareas.map((tarea, index) => {
-                    return (
-                        <ComponenteTarea
-                           key={index}
-                           prop={tarea}
-                           propCompletar={completarTarea} 
-                           propEliminar={eliminarTarea}
-                          /> 
-                           );
-                          })}
-    
-  
-
-
-                                   
-                </tbody>
-              </table>
+              {tablaTareas}
 
               </div>
 
@@ -103,6 +120,7 @@ function agregarTareas(tarea){
 
         <CargarTarea
             propAgregar={agregarTareas}
+            propLenght={tareas.length}
         />
 
                     

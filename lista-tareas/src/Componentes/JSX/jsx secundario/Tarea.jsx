@@ -13,7 +13,20 @@ const ComponenteTarea = ({prop, propCompletar, propEliminar}) => {
         };
     }, [prop]);
 
+/// estilos guardaods en const
+const tarea_completada = {
+    color: "gray",
+    textDecoration: "line-through",
 
+}
+
+const tarea_incompleta = {
+    fontWeight: "bold",
+    color: "tomato",
+
+}
+
+/// funciones
     function nivel_de_tarea(){
         switch (prop.nivel){
             case NIVELES.NORMAL:
@@ -61,7 +74,7 @@ const ComponenteTarea = ({prop, propCompletar, propEliminar}) => {
 
     return (
 
-        <tr  className='fw-normal'>
+        <tr  className='fw-normal' style={prop.completada ? tarea_completada : tarea_incompleta }>
           <th>
             <span className='ms-2'>{prop.nombre}</span>
           </th>

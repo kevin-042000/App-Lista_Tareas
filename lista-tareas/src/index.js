@@ -6,11 +6,13 @@ import './index.css';
 import '../src/sass/tarea.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppRouting from './AppRouting'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <AppRouting/>
   </React.StrictMode>
 );
 

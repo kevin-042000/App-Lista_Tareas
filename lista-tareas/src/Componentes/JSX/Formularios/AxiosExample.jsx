@@ -1,5 +1,5 @@
 import React from 'react';
-import { login,  getAllUser, getAllPageUsers, getUserByID} from '../../../Service/ServiceCrudAxios';
+import { login,  getAllUser, getAllPageUsers, getUserByID, createUser, updateUserByID, deleteUserByID} from '../../../Service/ServiceCrudAxios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -61,6 +61,42 @@ const autHUser = (values) => {
     .catch((error) => alert(`el error al traer a todos los usuarios es ${error}`))
   }
 
+  const createNewUser =(name, job) => {
+    createUser(name, job)
+    .then((response) => {
+      if(response.data && response.status === 201){
+        alert(JSON.stringify(response.data))
+      }else {
+        throw new Error('user not created')
+      }
+    })
+    .catch((error) => alert(`el error es ${error}`))
+  }
+
+  const updateUser =(id, name, job) => {
+    updateUserByID(id, name, job)
+    .then((response) => {
+      if(response.data && response.status === 200){
+        alert(JSON.stringify(response.data))
+      }else {
+        throw new Error('user not found & no update done')
+      }
+    })
+    .catch((error) => alert(`el error es ${error}`))
+  }
+
+  const deleteUser =(id) => {
+    deleteUserByID(id)
+    .then((response) => {
+      if(response.status === 204){
+        alert(`el usuario con el ID: ${id} se elimino`)
+      }else {
+        throw new Error('no se pudo eliminar usuario')
+      }
+    })
+    .catch((error) => alert(`el error es ${error}`))
+  }
+
   return (
     <div>
       <h4>Login Formik</h4>
@@ -110,6 +146,18 @@ const autHUser = (values) => {
 
         <button onClick={() => obtainUserByID(1)}>
         traer usuario por ID
+        </button>
+
+        <button onClick={() => createNewUser('morpheus', 'leader')}>
+        crear usuario
+        </button>
+
+        <button onClick={() => updateUser('1, morpheus', 'leader')}>
+       actualizar usuario
+        </button>
+
+        <button onClick={() => deleteUser('1,morpheus', 'leader')}>
+        eliminar usuario
         </button>
 
       </div>

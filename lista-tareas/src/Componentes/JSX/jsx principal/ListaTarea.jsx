@@ -99,7 +99,7 @@ if(tareas.length > 0){
     return (
         <div>
 
-        <div className='col-12'>
+        <div className='col-12 contenedor-tarea-form'>
            <div className='card'>
               <div className='card-header p-3'>
               <h5>
@@ -113,15 +113,20 @@ if(tareas.length > 0){
 
               </div>
 
+              <div className='card-footer p-3'>
+
+              </div>
 
            </div>
-        </div>
 
-
-        <CargarTarea
+           <CargarTarea
             propAgregar={agregarTareas}
             propLenght={tareas.length}
         />
+        </div>
+
+
+     
 
                     
         </div>

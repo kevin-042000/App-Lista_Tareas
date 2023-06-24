@@ -22,7 +22,7 @@ const tarea_completada = {
 
 const tarea_incompleta = {
     fontWeight: "bold",
-    color: "tomato",
+    color: "red",
 
 }
 
@@ -66,8 +66,6 @@ const tarea_incompleta = {
             return  <i onClick={() => propCompletar(prop)} className='bi-toggle-off accion-tarea' style={{color:'grey'}}></i>
         }
     }
-
-
 
 
 

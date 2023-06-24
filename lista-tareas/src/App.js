@@ -1,14 +1,17 @@
 import './App.css';
 import ListaTarea from '../src/Componentes/JSX/jsx principal/ListaTarea'
-import AxiosExample from './Componentes/JSX/Formularios/AxiosExample';
+import  CargarTarea from '../src/Componentes/JSX/Formularios/cargar_tarea'
+// import AxiosExample from './Componentes/JSX/Formularios/AxiosExample';
 
 function App() {
   return (
     <div className="App">
 
-    {/* <ListaTarea></ListaTarea> */}
+    <ListaTarea></ListaTarea>
 
-     <AxiosExample></AxiosExample> 
+    {/* <CargarTarea></CargarTarea> */}
+
+     {/* <AxiosExample></AxiosExample>  */}
     
     </div>
   );

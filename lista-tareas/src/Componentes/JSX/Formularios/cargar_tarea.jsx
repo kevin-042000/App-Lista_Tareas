@@ -24,12 +24,23 @@ const CargarTarea = ({propAgregar, propLenght}) => {
     }
 
     return (
-        <form onSubmit={agregarTarea} className='d-flex justify-content-center align-items-center mb-4'>
-          <div className='form-outline flex-fill'>
-             <input ref={nombreRef} id='inputNombre' type='text' className='form-control form-control-lg' required autoFocus placeholder='Nombre de Tarea' />
-             <input ref={descripcionRef} id='inputDescripcion' type='text' className='form-control form-control-lg' required placeholder='Descripcion' />
+      
+        <div className='card'>
+           <div className='card-header p-3'>
+           <h5>
+             Ingresa tus tareas:
+           </h5>
+           </div>
+
+           <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position: 'relative', height: '400px'}}>
+
+           <form onSubmit={agregarTarea} >
+          <div >
+            
+             <input ref={nombreRef} id='inputNombre' type='text' required autoFocus placeholder='Nombre de Tarea' />
+             <input ref={descripcionRef} id='inputDescripcion' type='text' placeholder='Descripcion'/>
              {/* <label htmlFor='seleccionarNivel' className='sr-only'>Prioridad</label> */}
-             <select ref={nivelRef} defaultValue={NIVELES.NORMAL} className='form-control form-control-lg' id='seleccionarNivel'>
+             <select ref={nivelRef} defaultValue={NIVELES.NORMAL}  id='seleccionarNivel'>
 
               <option value={NIVELES.NORMAL}>
                     Normal
@@ -41,14 +52,24 @@ const CargarTarea = ({propAgregar, propLenght}) => {
                     Bloquiante
               </option>
             </select>
-            <button type='submit' className='btn btn-success btn-lg ms-2'>
+            <button type='submit'>
                {propLenght > 0 ? 'Agregar nueva tarea' : 'Crear tu primer tarea'}
             </button>
           </div>
-
-         
-            
+     
         </form>
+
+           </div>
+
+           <div className='card-footer p-3'>
+
+              </div>
+
+
+        </div>
+    
+
+       
     );
 }
 

@@ -22,7 +22,7 @@ const tarea_completada = {
 
 const tarea_incompleta = {
     fontWeight: "bold",
-    color: "red",
+    color: "#E71828",
 
 }
 

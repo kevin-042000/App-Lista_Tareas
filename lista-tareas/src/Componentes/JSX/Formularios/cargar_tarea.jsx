@@ -25,7 +25,7 @@ const CargarTarea = ({propAgregar, propLenght}) => {
 
     return (
       
-        <div className='card'>
+        <div className='card cardFormulario'>
            <div className='card-header p-3'>
            <h5>
              Ingresa tus tareas:

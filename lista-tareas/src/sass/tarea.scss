@@ -39,14 +39,43 @@ form {
       
   }
   
-
-.contenedor-tarea-form{
+  .contenedor-tarea-form {
     display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
   .card {
     flex: 0 0 calc(50% - 10px);
     margin-bottom: 20px;
   }
-}
+  
+  @media screen and (max-width: 768px) {
+    .contenedor-tarea-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-direction: column;
+      margin-bottom: 1rem;
+      
+    }
+  
+    .card {
+      flex: 1 0 85%;
+      max-width: 85%;
+      margin: 1rem auto;
+      text-align: center; /* Agregar centrado horizontal del contenido */
+    
+    }
+    .cardFormulario{
+      margin-right: 1.5rem;
+    }
+    .cardTareas{
+      margin-right: 1.3rem;
+
+    }
+  }
+  
+  
+  
